@@ -80,7 +80,7 @@ export default function Sidebar({ expanded, onToggle }) {
           </nav>
         </ScrollArea>
 
-        <div className="p-3 mt-auto">
+        {/* <div className="p-3 mt-auto">
           <div
             className={cn(
               "flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-accent cursor-pointer",
@@ -97,7 +97,7 @@ export default function Sidebar({ expanded, onToggle }) {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
       </aside>
     </TooltipProvider>
   );

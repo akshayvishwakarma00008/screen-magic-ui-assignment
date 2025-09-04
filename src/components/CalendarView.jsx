@@ -5,7 +5,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { X } from "lucide-react";
+import { X, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { calendarEvents } from "@/dummy-data/calendar-events";
 
@@ -45,7 +45,7 @@ function renderEventContent(arg) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 truncate rounded-full px-2 py-0.5 text-xs font-medium",
+        "inline-flex items-center gap-1 truncate rounded-sm px-2 py-0.5 text-xs font-medium",
         toneClasses.bg
       )}
     >
@@ -87,12 +87,19 @@ export default function CalendarView() {
             </button>
           </div>
 
-          <h3 className="font-semibold">{selectedEvent.title}</h3>
-          <p className="text-xs text-gray-500">
-            {selectedEvent.extendedProps.channel} |{" "}
-            {selectedEvent.extendedProps.type} | Edited{" "}
-            {selectedEvent.extendedProps.editedOn}
-          </p>
+          <div className="flex gap-1">
+            <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-sm bg-blue-100">
+              <Info className="h-4 w-4 text-blue-600" />
+            </div>
+            <div>
+              <p className="font-semibold">{selectedEvent.title}</p>
+              <p className="text-xs text-gray-500 ">
+                {selectedEvent.extendedProps.channel} |{" "}
+                {selectedEvent.extendedProps.type} | Edited{" "}
+                {selectedEvent.extendedProps.editedOn}
+              </p>
+            </div>
+          </div>
 
           {selectedEvent.extendedProps.image && (
             <img

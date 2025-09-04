@@ -34,7 +34,7 @@ export default function CampaignsPage() {
     <div className="min-h-dvh p-6">
       <div className="mb-4 flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-semibold tracking-tight">Campaign</h1>
+          <h1 className="text-4xl font-semibold tracking-tight mb-2">Campaign</h1>
           <p className="text-sm text-gray-400">
             Automate your customer journey with pre build recepies
           </p>
@@ -148,7 +148,7 @@ export default function CampaignsPage() {
           </TabsContent>
 
           <TabsContent value="activity" className="mt-4">
-            <Card className="p-8 text-sm text-muted-foreground">
+            <Card className="p-8 text-sm text-gray-500 border border-gray-200">
               Activity log coming soon…
             </Card>
           </TabsContent>

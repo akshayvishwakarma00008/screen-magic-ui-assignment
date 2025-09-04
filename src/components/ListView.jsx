@@ -150,8 +150,8 @@ function Row({ c, index }) {
     >
       <TableCell className="px-6 py-3">
         <div className="flex items-start gap-3">
-          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
-            <Info className="h-4 w-4 text-blue-400" />
+          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-sm bg-blue-100">
+            <Info className="h-4 w-4 text-blue-600" />
           </div>
           <div className="min-w-0">
             <div className="truncate font-medium leading-tight text-black">
