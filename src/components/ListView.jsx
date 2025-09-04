@@ -25,6 +25,8 @@ import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { useNavigate } from "react-router-dom";
+
 export default function ListView({
   data,
   page,
@@ -140,8 +142,14 @@ export default function ListView({
 }
 
 function Row({ c, index }) {
+  const navigate = useNavigate();
+
+  const handleRowClick = () => {
+    navigate(`/campaign-details?id=${c.id}`);
+  };
   return (
     <TableRow
+      onClick={() => handleRowClick(c.id)}
       className={cn(
         "align-top border-b border-gray-200",
         index % 2 === 1 ? "bg-gray-50" : "bg-white",
@@ -177,7 +185,7 @@ function Row({ c, index }) {
 
       <TableCell className="text-sm">{c.createdOn}</TableCell>
 
-      <TableCell className="text-right">
+      <TableCell className="text-right" onClick={(e) => e.stopPropagation()}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="h-8 w-8">
