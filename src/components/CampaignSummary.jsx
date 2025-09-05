@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Clock3 } from "lucide-react";
+import { Clock3, EllipsisVertical, ArrowLeft } from "lucide-react";
 import {
   AreaChart,
   Area,
@@ -10,6 +10,8 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import whatsappIcon from "../assets/whatsapp.png";
+import advertise from "../assets/advertise.png";
 
 const funnel = [
   { name: "Sent", value: 14017 },
@@ -28,7 +30,7 @@ const sideStats = [
 const metaItems = [
   { label: "Total recipients", value: "15,017" },
   { label: "Campaign Type", value: "Broadcast" },
-  { label: "Channel", value: "WhatsApp", dot: "#25D366" },
+  { label: "Channel", value: "WhatsApp", icon: true },
   { label: "Sender ID", value: "98181928198" },
   { label: "Total credits consumed", value: "20,000" },
 ];
@@ -54,7 +56,7 @@ export default function CampaignSummary() {
             <span className="font-semibold">14,017</span> valid numbers!
           </div>
 
-          <Card className="overflow-hidden p-4 border border-gray-200">
+          <Card className="mb-6 overflow-hidden p-4 border border-gray-200">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="min-h-[220px]">
                 <FunnelAreaChart data={funnel} />
@@ -74,7 +76,8 @@ export default function CampaignSummary() {
             </div>
           </Card>
 
-          <div className="mt-6 rounded-xl bg-white p-4 border border-gray-200">
+          <Separator className="w-4 h-4 bg-gray-200" />
+          <div className="mt-4 mb-4 rounded-xl bg-white p-4">
             <div className="text-md">
               <span className="font-medium">Campaign description :</span> End of
               the season sale of 2024
@@ -86,14 +89,15 @@ export default function CampaignSummary() {
                   key={m.label}
                   label={m.label}
                   value={m.value}
-                  dot={m.dot}
+                  icon={m.icon}
                   showSeparator={i !== 0}
                 />
               ))}
             </div>
           </div>
 
-          <div className="mt-6 rounded-xl bg-white p-4 border border-gray-200">
+          <Separator className="w-4 h-4 bg-gray-200" />
+          <div className="mt-4 mb-4 rounded-xl bg-white p-4">
             <div className="text-md">
               <span className="font-medium">To </span>
             </div>
@@ -104,14 +108,15 @@ export default function CampaignSummary() {
                   key={m.label}
                   label={m.label}
                   value={m.value}
-                  dot={m.dot}
+                  icon={m.icon}
                   showSeparator={false}
                 />
               ))}
             </div>
           </div>
+          <Separator className="w-4 h-4 bg-gray-200" />
 
-          <div className="mt-6 rounded-xl bg-white p-4 border border-gray-200">
+          <div className="mt-4 mb-4 rounded-xl bg-white p-4">
             <div className="text-md">
               <span className="font-medium">Compliance Setting </span>
             </div>
@@ -121,14 +126,15 @@ export default function CampaignSummary() {
             </div>
           </div>
 
-          <div className="mt-6 rounded-xl bg-white p-4 border border-gray-200">
+          <Separator className="w-4 h-4 bg-gray-200" />
+          <div className="mt-4 mb-4 rounded-xl bg-white p-4">
             <div className="text-md">
               <span className="font-medium">When </span>
             </div>
 
             <div className="flex items-center space-x-2 mb-4 rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-700 ring-1 ring-blue-100 my-6">
               <div>
-                <Clock3 width={14}/>
+                <Clock3 width={14} />
               </div>
               <div>
                 <span className="text-gray-600">The message sent on </span>
@@ -202,7 +208,7 @@ function FunnelAreaChart({ data }) {
   );
 }
 
-function MetaBlock({ label, value, dot, showSeparator = true }) {
+function MetaBlock({ label, value, icon = false, showSeparator = true }) {
   return (
     <div className="flex gap-4">
       {showSeparator && (
@@ -211,12 +217,7 @@ function MetaBlock({ label, value, dot, showSeparator = true }) {
       <div>
         <div className="text-xs text-gray-500">{label}</div>
         <div className="mt-1 flex items-center gap-2 text-sm font-medium">
-          {dot && (
-            <span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ background: dot }}
-            />
-          )}
+          {icon && <img className="h-4 w-4 rounded-full" src={whatsappIcon} />}
           {value}
         </div>
       </div>
@@ -226,26 +227,38 @@ function MetaBlock({ label, value, dot, showSeparator = true }) {
 
 function PhonePreview() {
   return (
-    <div className="mx-auto w-[320px] rounded-[30px] border bg-[#e8d6c7] p-4 shadow-sm">
-      <div className="mb-3 flex items-center gap-2">
-        <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-        <div className="text-sm font-medium">Company name</div>
-        <div className="ml-auto h-2 w-10 rounded-full bg-[#cbb8a8]" />
+    <div className="mx-auto w-[320px] rounded-t-[30px] border border-gray-200 shadow-sm">
+      <div className=" flex items-center gap-2 bg-[#125f55] rounded-t-[30px] w-[320px] h-16 px-4 text-white">
+        <div className="cursor-pointer">
+          <ArrowLeft />
+        </div>
+        <div className="h-5 w-5 rounded-full bg-emerald-500" />
+        <div className="text-sm font-medium ">Company name</div>
+        <div className="ml-auto h-2 w-10 flex items-center cursor-pointer">
+          <EllipsisVertical />
+        </div>
       </div>
 
-      <div className="rounded-lg bg-white p-3 shadow-sm">
-        <div className="aspect-[16/9] w-full overflow-hidden rounded-md bg-gray-100" />
-        <div className="mt-2 text-[13px] text-gray-700">
-          Recharge with 349 Rs. and get best value for 28 days, 2GB/day +
-          Unlimited 5G
+      <div className="px-6 bg-[#f2e3d6] p-6">
+        <div className="flex justify-center mb-4">
+          <p>Today</p>
         </div>
-
-        <div className="mt-2 space-y-2">
-          <div className="flex items-center justify-between rounded-md border px-3 py-2 text-sm">
-            <span>↩︎ Recharge with 349 Rs.</span>
+        <div className=" bg-white p-4 shadow-sm rounded-t-md rounded-br-md">
+          <div className="aspect-[16/9] w-full overflow-hidden rounded-md bg-gray-100">
+            <img src={advertise} alt="advertise" />
           </div>
-          <div className="flex items-center justify-between rounded-md border px-3 py-2 text-sm">
-            <span>↩︎ More Plans</span>
+          <div className="mt-2 text-[13px] text-gray-700">
+            Recharge with 349 Rs. and get best value for 28 days, 2GB/day +
+            Unlimited 5G
+          </div>
+
+          <div className="mt-2 space-y-2">
+            <div className="flex items-center justify-between rounded-md border border-gray-200 px-3 py-2 text-sm bg-[#e2e2e2] cursor-pointer">
+              <span>↩︎ Recharge with 349 Rs.</span>
+            </div>
+            <div className="flex items-center justify-between rounded-md border border-gray-200 px-3 py-2 text-sm bg-[#e2e2e2] cursor-pointer">
+              <span>↩︎ More Plans</span>
+            </div>
           </div>
         </div>
       </div>

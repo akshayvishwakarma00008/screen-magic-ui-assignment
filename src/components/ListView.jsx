@@ -43,7 +43,7 @@ export default function ListView({
       >
         <Table className="w-full border-collapse">
           <TableHeader>
-            <TableRow className="border-b border-gray-200 bg-gray-200">
+            <TableRow className="border-b border-gray-200 bg-gray-100">
               <TableHead className="w-[34%] text-slate-700 py-6">
                 Campaign Name
               </TableHead>
@@ -151,7 +151,7 @@ function Row({ c, index }) {
     <TableRow
       onClick={() => handleRowClick(c.id)}
       className={cn(
-        "align-top border-b border-gray-200",
+        "align-top border-b border-gray-200 cursor-pointer",
         index % 2 === 1 ? "bg-gray-50" : "bg-white",
         "hover:bg-gray-50/80 text-gray-600"
       )}

@@ -38,7 +38,7 @@ export default function Sidebar({ expanded, onToggle }) {
   const location = useLocation?.();
 
   return (
-    <TooltipProvider delayDuration={150}>
+    // <TooltipProvider delayDuration={150}>
       <aside
         className={cn(
           "h-dvh bg-slate-900 text-slate-200 border-r-0 sticky top-0 flex flex-col",
@@ -99,7 +99,7 @@ export default function Sidebar({ expanded, onToggle }) {
           </div>
         </div> */}
       </aside>
-    </TooltipProvider>
+    // </TooltipProvider>
   );
 }
 
@@ -143,9 +143,9 @@ function NavItem({ to, label, icon: Icon, expanded, active }) {
           {content}
         </NavLink>
       </TooltipTrigger>
-      <TooltipContent side="right" className="py-1 px-2 text-xs">
+      {/* <TooltipContent side="right" className="py-1 px-2 text-xs">
         {label}
-      </TooltipContent>
+      </TooltipContent> */}
     </Tooltip>
   );
 }
